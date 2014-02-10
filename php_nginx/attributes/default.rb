@@ -1,4 +1,5 @@
-default['doc_root'] = '/var/www/'
+default['doc_root'] = '/var/www/app/webroot/'
+default['app_root'] = '/var/www/'
 default['versions']['git'] = '1:1.7.9*'
 default['versions']['subversion'] = '1.6.17*'
 default['versions']['nginx'] = '1.1.19*'
