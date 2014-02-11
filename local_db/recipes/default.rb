@@ -11,3 +11,8 @@ end
       action [:start, :restart]
     end
 end
+bash "create local db" do
+  code <<-EOS
+    mysql -u root --execute  "create database if not exists myapp"
+  EOS
+end
