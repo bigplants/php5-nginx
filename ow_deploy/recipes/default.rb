@@ -17,3 +17,17 @@ node[:deploy].each do |application, deploy|
     app application
   end
 end
+
+# デプロイ後の処理
+bash "cake schema update" do
+  code <<-EOS
+    cd #{node[:app_root]}; composer update
+    #cd #{node[:app_root]}app; yes | ./Console/cake schema update
+  EOS
+end
+
+%w{php5-fpm nginx}.each do |service_name|
+    service service_name do
+      action [:start, :restart]
+    end
+end
