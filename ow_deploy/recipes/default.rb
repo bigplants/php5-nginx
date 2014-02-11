@@ -26,8 +26,18 @@ bash "cake schema update" do
   EOS
 end
 
+# 再起動
 %w{php5-fpm nginx}.each do |service_name|
     service service_name do
       action [:start, :restart]
     end
+end
+
+# tmpディレクトリ作成
+directory "#{node[:app_root]}app/tmp" do
+  owner 'deploy'
+  group 'www-data'
+  mode 0777
+  action :create
+  not_if {::File.exists?("#{node[:app_root]}app/tmp")}
 end
