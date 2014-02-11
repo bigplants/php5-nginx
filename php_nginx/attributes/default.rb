@@ -15,4 +15,4 @@ default['versions']['postgresql'] = '9.1*'
 default['versions']['curl'] = '7.22.0*'
 default['versions']['imagemagick'] = '8:6.6.9.7*'
 default['versions']['php5-imagick'] = '3.*'
-
+default['doc_root'] = '/srv/www/app/webroot/'
